@@ -3,13 +3,13 @@ import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { colors } from '../styles/styles';
 import { Avatar } from 'react-native-paper'
+import { useSelector } from 'react-redux';
 
 const Footer = ({ activeRoute }) => {
 
     const navigation = useNavigation();
 
-    const isAuthenticated = true;
-    const loading = false;
+    const {loading, isAuthenticated} = useSelector((state) => state.user)
 
     const avatarOptions = {
         color: colors.color2,
@@ -29,23 +29,7 @@ const Footer = ({ activeRoute }) => {
         if (key === 0) {
             navigation.navigate('Home')
         }
-        // switch (key) {
-        //     case 0:
-        //         navigation.navigate('Home')
-        //         break;
-        //     case 1:
-        //         navigation.navigate('cart')
-        //         break;
-        //     case 2:
 
-        //         // isAuthenticated ? navigation.navigate('profile') : navigation.navigate('login')
-        //         if (isAuthenticated) { navigation.navigate('Profile'); console.log(key) }
-        //         else navigation.navigate('login')
-
-        //     default:
-        //         navigation.navigate('Home')
-        //         break;
-        // }
     }
     return (
         loading === false && (<View style={{
